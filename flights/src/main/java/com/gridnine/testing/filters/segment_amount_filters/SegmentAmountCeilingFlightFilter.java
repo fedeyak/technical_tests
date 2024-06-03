@@ -1,20 +1,18 @@
 package main.java.com.gridnine.testing.filters.segment_amount_filters;
 
 import main.java.com.gridnine.testing.Flight;
-import main.java.com.gridnine.testing.filters.FlightFilter;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SegmentCeilingFlightFilter extends FlightFilter {
-    public SegmentCeilingFlightFilter(int number, List<Flight> flights) {
-        super(number, flights);
+public class SegmentAmountCeilingFlightFilter extends SegmentAmountFiltersHelper {
+    public SegmentAmountCeilingFlightFilter(int numberOfSegments, List<Flight> flights) {
+        super(numberOfSegments, flights);
     }
 
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> flight.getNumberOfSegments() >= number)
+                .filter(flight -> getNumberOfSegments(flight) >= number)
                 .collect(Collectors.toList());
     }
 }

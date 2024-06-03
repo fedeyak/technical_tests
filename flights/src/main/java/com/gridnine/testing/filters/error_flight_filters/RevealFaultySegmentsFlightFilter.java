@@ -13,7 +13,7 @@ public class RevealFaultySegmentsFlightFilter extends ErrorFlightFiltersHelper{
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> departureBeforeArrival(flight) == false)
+                .filter(flight -> !departureBeforeArrival(flight))
                 .collect(Collectors.toList());
     }
 }

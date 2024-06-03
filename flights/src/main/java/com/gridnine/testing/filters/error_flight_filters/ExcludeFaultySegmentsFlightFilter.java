@@ -13,7 +13,7 @@ public class ExcludeFaultySegmentsFlightFilter extends ErrorFlightFiltersHelper 
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> departureBeforeArrival(flight) == true)
+                .filter(this::departureBeforeArrival)
                 .collect(Collectors.toList());
     }
 }

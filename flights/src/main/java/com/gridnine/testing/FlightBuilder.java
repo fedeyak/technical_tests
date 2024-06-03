@@ -7,19 +7,6 @@ import java.util.List;
 
 public class FlightBuilder {
 
-    private static LocalDateTime now = LocalDateTime.now();
-    private static LocalDateTime tomorrow = now.plusDays(1);
-    private static LocalDateTime yesterday = now.minusDays(1);
-
-
-    static Flight createSingleShortFlight() {
-        return createFlight(Segment.getNewSegment(tomorrow, tomorrow.plusHours(1)));
-    }
-
-    static Flight createSingleLongFlight() {
-        return createFlight(Segment.getNewSegment(tomorrow, tomorrow.plusHours(5)));
-    }
-
     public static List<Flight> createFlights() {
         LocalDateTime threeDaysFromNow = LocalDateTime.now().plusDays(3);
         return Arrays.asList(
@@ -28,7 +15,7 @@ public class FlightBuilder {
                 //A normal multi segment flight
                 createFlight(Segment.getNewSegment(threeDaysFromNow, threeDaysFromNow.plusHours(2)),
                         Segment.getNewSegment(threeDaysFromNow.plusHours(3), threeDaysFromNow.plusHours(5))),
-                //A flight departing in the past
+                //A flight departing  in the past
                 createFlight(Segment.getNewSegment(threeDaysFromNow.minusDays(6), threeDaysFromNow)),
                 //A flight that departs before it arrives
                 createFlight(Segment.getNewSegment(threeDaysFromNow, threeDaysFromNow.minusHours(6))),

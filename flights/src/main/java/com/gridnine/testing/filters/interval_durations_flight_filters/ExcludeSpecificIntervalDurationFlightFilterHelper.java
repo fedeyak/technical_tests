@@ -6,10 +6,10 @@ import main.java.com.gridnine.testing.Segment;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExcludeSpecificIntervalDurationFlightFilter extends IntervalDurationFlightFilter{
+public class ExcludeSpecificIntervalDurationFlightFilterHelper extends IntervalDurationFlightFilterHelper {
 
-    public ExcludeSpecificIntervalDurationFlightFilter(int number, List<Flight> flights) {
-        super(number, flights);
+    public ExcludeSpecificIntervalDurationFlightFilterHelper(int intervalDuration, List<Flight> flights) {
+        super(intervalDuration, flights);
     }
 
     private boolean excludeSpecificIntervalDurationFlightFilter(Flight flight) {
@@ -20,7 +20,7 @@ public class ExcludeSpecificIntervalDurationFlightFilter extends IntervalDuratio
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> excludeSpecificIntervalDurationFlightFilter(flight))
+                .filter(this::excludeSpecificIntervalDurationFlightFilter)
                 .collect(Collectors.toList());
     }
 }

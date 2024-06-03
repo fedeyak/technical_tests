@@ -31,7 +31,7 @@ public class DepartureArrivalFlightFilters extends FlightFilter {
         }
         return FLIGHT_NOT_STARTED;
         //todo
-        // check cases when initialDeparture or finalArrival equals to now
+        // check cases when initialDeparture or finalArrival equals to Now
 
     }
 

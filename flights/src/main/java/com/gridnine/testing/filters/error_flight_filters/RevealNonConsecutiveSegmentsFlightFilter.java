@@ -13,7 +13,7 @@ public class RevealNonConsecutiveSegmentsFlightFilter extends ErrorFlightFilters
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> allSegmentsConsecutive(flight) == false)
+                .filter(flight -> !allSegmentsConsecutive(flight))
                 .collect(Collectors.toList());
     }
 }

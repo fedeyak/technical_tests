@@ -5,7 +5,7 @@ import main.java.com.gridnine.testing.Flight;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CurrentlyInTheAirFlightFilter extends InAirOnGroundFlightFilter{
+public class CurrentlyInTheAirFlightFilter extends InAirOnGroundFlightFilterHelper {
     public CurrentlyInTheAirFlightFilter(List<Flight> flights) {
         super(flights);
     }
@@ -13,7 +13,7 @@ public class CurrentlyInTheAirFlightFilter extends InAirOnGroundFlightFilter{
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> isOnTheGround(flight) == false)
+                .filter(flight -> !isOnTheGround(flight))
                 .collect(Collectors.toList());
     }
 }

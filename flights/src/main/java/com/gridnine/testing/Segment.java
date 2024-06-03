@@ -1,9 +1,5 @@
 package main.java.com.gridnine.testing;
 
-import main.java.com.gridnine.testing.exceptions.arrivalPriorToDepartureException;
-import main.java.com.gridnine.testing.exceptions.departureTimeExpiredException;
-
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -27,11 +23,6 @@ public class Segment {
     public LocalDateTime getArrivalDate() {
         return arrivalDate;
     }
-
-    private Long segmentDuration() {
-        return Duration.between(departureDate, arrivalDate).toHours();
-    }
-
 
     @Override
     public String toString() {

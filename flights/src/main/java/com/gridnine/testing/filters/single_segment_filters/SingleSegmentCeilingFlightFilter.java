@@ -2,13 +2,14 @@ package main.java.com.gridnine.testing.filters.single_segment_filters;
 
 import main.java.com.gridnine.testing.Flight;
 import main.java.com.gridnine.testing.Segment;
+import main.java.com.gridnine.testing.filters.FlightFilter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SingleSegmentCeilingFlightFilter extends SingleSegmentFlightFilter{
-    public SingleSegmentCeilingFlightFilter(int number, List<Flight> flights) {
-        super(number, flights);
+public class SingleSegmentCeilingFlightFilter extends FlightFilter {
+    public SingleSegmentCeilingFlightFilter(int segmentDuration, List<Flight> flights) {
+        super(segmentDuration, flights);
     }
 
     private boolean segmentDurationCeiling(Flight flight) {
@@ -19,7 +20,7 @@ public class SingleSegmentCeilingFlightFilter extends SingleSegmentFlightFilter{
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> segmentDurationCeiling(flight))
+                .filter(this::segmentDurationCeiling)
                 .collect(Collectors.toList());
     }
 }

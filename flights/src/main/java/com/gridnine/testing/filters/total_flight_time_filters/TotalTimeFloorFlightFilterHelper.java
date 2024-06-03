@@ -5,15 +5,15 @@ import main.java.com.gridnine.testing.Flight;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ExcludeSpecificTotalTimeFlightFilter extends TotalTimeFlightFilter{
-    public ExcludeSpecificTotalTimeFlightFilter(int number, List<Flight> flights) {
-        super(number, flights);
+public class TotalTimeFloorFlightFilterHelper extends TotalTimeFlightFilterHelper {
+    public TotalTimeFloorFlightFilterHelper(int numberOfHours, List<Flight> flights) {
+        super(numberOfHours, flights);
     }
 
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> flightDuration(flight) != number)
+                .filter(flight -> flightDuration(flight) <= number)
                 .collect(Collectors.toList());
     }
 }

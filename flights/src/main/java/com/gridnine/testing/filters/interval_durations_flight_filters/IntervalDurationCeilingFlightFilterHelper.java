@@ -6,9 +6,9 @@ import main.java.com.gridnine.testing.Segment;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IntervalDurationCeilingFlightFilter extends IntervalDurationFlightFilter{
-    public IntervalDurationCeilingFlightFilter(int number, List<Flight> flights) {
-        super(number, flights);
+public class IntervalDurationCeilingFlightFilterHelper extends IntervalDurationFlightFilterHelper {
+    public IntervalDurationCeilingFlightFilterHelper(int intervalDuration, List<Flight> flights) {
+        super(intervalDuration, flights);
     }
 
     private boolean intervalDurationCeilingFlightFilter(Flight flight) {
@@ -19,7 +19,7 @@ public class IntervalDurationCeilingFlightFilter extends IntervalDurationFlightF
     @Override
     public List<Flight> processFlights() {
         return flights.stream()
-                .filter(flight -> intervalDurationCeilingFlightFilter(flight))
+                .filter(this::intervalDurationCeilingFlightFilter)
                 .collect(Collectors.toList());
     }
 }
